@@ -45,23 +45,23 @@ mask = np.where(outlierBool) # Turn boolean into index of outliers
 
 diff[mask] = newMean # Replace outliers with the mean estimted without outliers
 
-print("This actually worked")
+print(diff.shape)
 
-print('I added some more stuff to the file')
 
-# geojson = {
-#         "type": "FeatureCollection",
-#         "features":[
-#                 {
-#                         "type":"Feature","properties":{"dbh":7}, 
-#                                 "geometry":{"type":"Point",
-#                                 "coordinates": [round(d["longitudeE7"] / 1e7,5), 
-#                                                 round(d["latitudeE7"] / 1e7,5)],
-#                                 },
+geojson = {
+        "type": "FeatureCollection",
+        "features":[
+                {
+                        "type":"Feature","properties":{"durationSec":d[1]}, 
+                                "geometry":{"type":"Point",
+                                "coordinates": [round(d[0]["longitudeE7"] / 1e7,5), 
+                                                round(d[0]["latitudeE7"] / 1e7,5)],
+                                },
                                 
-#                                 } for d in data['locations'][0:500]] 
-#     }
+                                } for d in zip(data['locations'][0:500],diff[0:500])] 
+    }
     
+print(geojson['features'][0])
 
 # string = json.dumps(geojson, separators=(',', ':'))
     
