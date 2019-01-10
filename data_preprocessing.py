@@ -47,6 +47,8 @@ diff[mask] = newMean # Replace outliers with the mean estimted without outliers
 
 print("This actually worked")
 
+print('I added some more stuff to the file')
+
 # geojson = {
 #         "type": "FeatureCollection",
 #         "features":[
